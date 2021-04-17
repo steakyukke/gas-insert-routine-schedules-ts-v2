@@ -1,0 +1,27 @@
+{
+  "name": "gas-insert-routine-schedules-ts-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/Index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/index.ts",
+    "lint:fix": "eslint --fix src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.31",
+    "node-forge": "^0.10.0"
+  }
+}
