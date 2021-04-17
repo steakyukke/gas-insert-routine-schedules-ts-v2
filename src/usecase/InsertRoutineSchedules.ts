@@ -22,6 +22,16 @@ const ROUTINE_LIST_INDEX_NUM = ROUTINE_LIST_INDEX_MEMO + 1;
 //  クラス
 // -----------------------------------------------------------------------------
 export class InsertRoutineSchedules {
+  // プロパティー
+  private inputDate: Date;
+
+  /***
+   * コンストラクター
+   */
+  constructor(date?: Date) {
+    this.inputDate = date ?? null;
+  }
+
   /**
    * 表示中のシートから予定登録
    */
@@ -63,6 +73,9 @@ export class InsertRoutineSchedules {
       )
       .getValues();
 
+    const targetDate = this.inputDate ? this.inputDate : sheet.getRange(TARGET_DATE_CELL).getValue();
+    console.log(`targetDate:${targetDate}`);
+
     const schedules: Schedule[] = [];
     routines.forEach((routine) => {
       if (!this.isValidSchedule(routine)) {
@@ -75,7 +88,6 @@ export class InsertRoutineSchedules {
 
       schedule.title = routine[ROUTINE_LIST_INDEX_TITLE].trim();
 
-      const targetDate = sheet.getRange(TARGET_DATE_CELL).getValue();
       const startTime = routine[ROUTINE_LIST_INDEX_START_TIME];
       schedule.startDateTime = new Date(
         targetDate.getFullYear(),
@@ -158,3 +170,10 @@ export class InsertRoutineSchedules {
     });
   }
 }
+
+// >>> Debug
+function outDebug() {
+  const activeSheet = SpreadsheetApp.getActiveSheet();
+  console.log(activeSheet.getName());
+}
+// <<<
